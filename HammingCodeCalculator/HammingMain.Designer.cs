@@ -1,6 +1,6 @@
 ﻿namespace HammingCodeCalculator
 {
-    partial class Form1
+    partial class HammingMain
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvEncVisual = new System.Windows.Forms.DataGridView();
@@ -88,6 +89,14 @@
             this.dgvEncVisual.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvEncVisual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEncVisual.ColumnHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEncVisual.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEncVisual.Location = new System.Drawing.Point(7, 46);
             this.dgvEncVisual.Name = "dgvEncVisual";
             this.dgvEncVisual.ReadOnly = true;
@@ -98,6 +107,7 @@
             this.dgvEncVisual.ShowEditingIcon = false;
             this.dgvEncVisual.Size = new System.Drawing.Size(276, 98);
             this.dgvEncVisual.TabIndex = 4;
+            this.dgvEncVisual.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvEncVisual_CellFormatting);
             // 
             // lbxEncParity
             // 
@@ -130,7 +140,6 @@
             this.txbEncRawInput.Size = new System.Drawing.Size(161, 27);
             this.txbEncRawInput.TabIndex = 1;
             this.txbEncRawInput.TextChanged += new System.EventHandler(this.txbEncRawInput_TextChanged);
-            this.txbEncRawInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbEncRawInput_KeyDown);
             // 
             // label4
             // 
@@ -189,7 +198,7 @@
             this.textBox1.Size = new System.Drawing.Size(132, 27);
             this.textBox1.TabIndex = 0;
             // 
-            // Form1
+            // HammingMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -197,7 +206,7 @@
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form1";
+            this.Name = "HammingMain";
             this.Text = "Hamming Code Calculator";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

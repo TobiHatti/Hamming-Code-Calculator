@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace HammingCodeCalculator
@@ -18,8 +19,14 @@ namespace HammingCodeCalculator
             get => rawData;
             set
             {
+                string input = Regex.Replace(value, @"\s+", "");
+
+                foreach (char digit in input)
+                    if (digit != '1' && digit != '0')
+                        throw new DataException("Invalid code.");
+
                 ParityBits.Clear();
-                rawData = value;
+                rawData = input;
                 hammingCode = Encode();
             }
         }
@@ -29,8 +36,14 @@ namespace HammingCodeCalculator
             get => hammingCode;
             set
             {
+                string input = Regex.Replace(value, @"\s+", "");
+
+                foreach (char digit in input)
+                    if (digit != '1' && digit != '0')
+                        throw new DataException("Invalid code.");
+
                 ParityBits.Clear();
-                hammingCode = value;
+                hammingCode = input;
                 rawData = Decode();
             }
         }
