@@ -65,5 +65,30 @@ namespace HammingCodeCalculator
                 e.CellStyle.ForeColor = Color.Gray;
             }
         }
+
+        private void txbDecHammingCode_TextChanged(object sender, EventArgs e)
+        {
+            lbxDecParity.Items.Clear();
+            dgvDecVisual.DataSource = null;
+            txbDecRawMessage.Text = "";
+
+            try
+            {
+                Hamming code = new Hamming();
+
+                code.HammingCode = txbDecHammingCode.Text;
+                txbDecRawMessage.Text = code.RawData;
+
+                int p = 1;
+                foreach (KeyValuePair<int, int> parity in code.ParityBits)
+                    lbxDecParity.Items.Add($"p{p++} (c{parity.Key}) = {parity.Value}");
+
+                dgvDecVisual.DataSource = code.GetVisual();
+            }
+            catch
+            {
+                MessageBox.Show("Please enter only '1' and '0' in the input field.", "Could not parse Hamming-Code", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

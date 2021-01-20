@@ -18,3 +18,13 @@ C:\Users\Tobias\Desktop\HuffmanCodeCalculator\HammingCodeCalculator\obj\Debug\Ha
 C:\Users\Tobias\Desktop\HuffmanCodeCalculator\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.csproj.CoreCompileInputs.cache
 C:\Users\Tobias\Desktop\HuffmanCodeCalculator\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.exe
 C:\Users\Tobias\Desktop\HuffmanCodeCalculator\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.pdb
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\bin\Debug\HammingCodeCalculator.exe.config
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\bin\Debug\HammingCodeCalculator.exe
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\bin\Debug\HammingCodeCalculator.pdb
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.csprojAssemblyReference.cache
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.HammingMain.resources
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.Properties.Resources.resources
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.csproj.GenerateResource.cache
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.csproj.CoreCompileInputs.cache
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.exe
+C:\Users\Tobias\Desktop\[GIT]\Hamming\HammingCodeCalculator\obj\Debug\HammingCodeCalculator.pdb

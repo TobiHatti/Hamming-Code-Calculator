@@ -19,14 +19,8 @@ namespace HammingCodeCalculator
             get => rawData;
             set
             {
-                string input = Regex.Replace(value, @"\s+", "");
-
-                foreach (char digit in input)
-                    if (digit != '1' && digit != '0')
-                        throw new DataException("Invalid code.");
-
                 ParityBits.Clear();
-                rawData = input;
+                rawData = ValidateInput(value);
                 hammingCode = Encode();
             }
         }
@@ -36,33 +30,25 @@ namespace HammingCodeCalculator
             get => hammingCode;
             set
             {
-                string input = Regex.Replace(value, @"\s+", "");
-
-                foreach (char digit in input)
-                    if (digit != '1' && digit != '0')
-                        throw new DataException("Invalid code.");
-
                 ParityBits.Clear();
-                hammingCode = input;
+                hammingCode = ValidateInput(value);
                 rawData = Decode();
             }
         }
 
         public Dictionary<int, int> ParityBits { get; } = new Dictionary<int, int>();
 
-        public Hamming()
+        private string ValidateInput(string input)
         {
+            input = Regex.Replace(input, @"\s+", "");
 
+            foreach (char digit in input)
+                if (digit != '1' && digit != '0')
+                    throw new DataException("Invalid code.");
+
+            return input;
         }
 
-
-        private int[] GetParityIndizes(int parityGrade)
-        {
-            
-
-
-            return null;
-        }
 
         public DataTable GetVisual()
         {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -39,12 +40,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvDecVisual = new System.Windows.Forms.DataGridView();
+            this.lbxDecParity = new System.Windows.Forms.ListBox();
+            this.txbDecRawMessage = new System.Windows.Forms.TextBox();
+            this.txbDecHammingCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEncVisual)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDecVisual)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -89,14 +96,14 @@
             this.dgvEncVisual.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvEncVisual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEncVisual.ColumnHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEncVisual.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEncVisual.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEncVisual.Location = new System.Drawing.Point(7, 46);
             this.dgvEncVisual.Name = "dgvEncVisual";
             this.dgvEncVisual.ReadOnly = true;
@@ -170,8 +177,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dgvDecVisual);
+            this.tabPage2.Controls.Add(this.lbxDecParity);
+            this.tabPage2.Controls.Add(this.txbDecRawMessage);
+            this.tabPage2.Controls.Add(this.txbDecHammingCode);
             this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
@@ -181,22 +193,95 @@
             this.tabPage2.Text = "Decode";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dgvDecVisual
+            // 
+            this.dgvDecVisual.AllowUserToAddRows = false;
+            this.dgvDecVisual.AllowUserToDeleteRows = false;
+            this.dgvDecVisual.AllowUserToOrderColumns = true;
+            this.dgvDecVisual.AllowUserToResizeColumns = false;
+            this.dgvDecVisual.AllowUserToResizeRows = false;
+            this.dgvDecVisual.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDecVisual.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvDecVisual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDecVisual.ColumnHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDecVisual.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDecVisual.Location = new System.Drawing.Point(7, 46);
+            this.dgvDecVisual.Name = "dgvDecVisual";
+            this.dgvDecVisual.ReadOnly = true;
+            this.dgvDecVisual.RowHeadersVisible = false;
+            this.dgvDecVisual.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.dgvDecVisual.ShowCellErrors = false;
+            this.dgvDecVisual.ShowCellToolTips = false;
+            this.dgvDecVisual.ShowEditingIcon = false;
+            this.dgvDecVisual.Size = new System.Drawing.Size(276, 98);
+            this.dgvDecVisual.TabIndex = 11;
+            // 
+            // lbxDecParity
+            // 
+            this.lbxDecParity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbxDecParity.FormattingEnabled = true;
+            this.lbxDecParity.ItemHeight = 19;
+            this.lbxDecParity.Location = new System.Drawing.Point(122, 183);
+            this.lbxDecParity.Name = "lbxDecParity";
+            this.lbxDecParity.Size = new System.Drawing.Size(160, 80);
+            this.lbxDecParity.TabIndex = 10;
+            // 
+            // txbDecRawMessage
+            // 
+            this.txbDecRawMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDecRawMessage.Location = new System.Drawing.Point(122, 150);
+            this.txbDecRawMessage.Name = "txbDecRawMessage";
+            this.txbDecRawMessage.ReadOnly = true;
+            this.txbDecRawMessage.Size = new System.Drawing.Size(161, 27);
+            this.txbDecRawMessage.TabIndex = 9;
+            // 
+            // txbDecHammingCode
+            // 
+            this.txbDecHammingCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDecHammingCode.Location = new System.Drawing.Point(122, 13);
+            this.txbDecHammingCode.Name = "txbDecHammingCode";
+            this.txbDecHammingCode.Size = new System.Drawing.Size(161, 27);
+            this.txbDecHammingCode.TabIndex = 8;
+            this.txbDecHammingCode.TextChanged += new System.EventHandler(this.txbDecHammingCode_TextChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 50);
+            this.label1.Location = new System.Drawing.Point(41, 183);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 19);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Parity Bits";
             // 
-            // textBox1
+            // label5
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 50);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 27);
-            this.textBox1.TabIndex = 0;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(7, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 19);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Hamming-Code";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(48, 153);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 19);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Message";
             // 
             // HammingMain
             // 
@@ -214,6 +299,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEncVisual)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDecVisual)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -230,8 +316,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dgvDecVisual;
+        private System.Windows.Forms.ListBox lbxDecParity;
+        private System.Windows.Forms.TextBox txbDecRawMessage;
+        private System.Windows.Forms.TextBox txbDecHammingCode;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
