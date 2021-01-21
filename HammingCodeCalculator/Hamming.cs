@@ -36,7 +36,9 @@ namespace HammingCodeCalculator
             }
         }
 
-        public Dictionary<int, int> ParityBits { get; } = new Dictionary<int, int>();
+        public int ErrorIndex { get; private set; } = 0;
+
+        public Dictionary<int, int> ParityBits { get; private set; } = new Dictionary<int, int>();
 
         private string ValidateInput(string input)
         {
@@ -65,12 +67,13 @@ namespace HammingCodeCalculator
             DataRow valRow = dt.NewRow();
             for (int i = 0; i < HammingCode.Length; i++)
             {
-                cRow[i] = $"c{i+1}";
+                cRow[i] = $"c{i + 1}";
 
                 if (IsPowerOfTwo(i + 1)) dpRow[i] = $"p{p++}";
                 else dpRow[i] = $"d{d++}";
 
-                valRow[i] = HammingCode[i];
+                if (i + 1 == ErrorIndex) valRow[i] = $"[{HammingCode[i]}]";
+                else valRow[i] = HammingCode[i];
             }
 
             dt.Rows.Add(cRow);
@@ -145,20 +148,69 @@ namespace HammingCodeCalculator
                 c++;
             }
 
-
-            for(int i = 0; i < rawData.Length; i++)
-            {
-                Debug.Print(rawData[i].ToString());
-            }
-
             return sb.ToString();
         }
 
         private string Decode()
         {
-            return null;
+            string receivedRaw;
+            Dictionary<int, int> receivedParity;
+
+            // Split into received message and parity bits
+            DecodeFilter(out receivedRaw, out receivedParity);
+
+            // Set received-Raw as raw (required for parity-calculation)
+            rawData = receivedRaw;
+
+            // Re-Calculate Parity Bits and set error-offset
+            ErrorIndex = 0;
+            int parityCount = 1;
+            foreach(KeyValuePair<int, int> parityBit in receivedParity)
+            {
+                if (GetParityBit(parityCount++) != parityBit.Value) ErrorIndex += parityBit.Key;
+            }
+
+            // Correct message
+            if(ErrorIndex != 0)
+            {
+                if (ErrorIndex < hammingCode.Length)
+                {
+                    StringBuilder sb = new StringBuilder(hammingCode);
+                    if (sb[ErrorIndex - 1] == '1') sb[ErrorIndex - 1] = '0';
+                    else sb[ErrorIndex - 1] = '1';
+                    hammingCode = sb.ToString();
+
+                    //Re-Decode Message
+                    DecodeFilter(out receivedRaw, out receivedParity);
+                    rawData = receivedRaw;
+                }
+            }
+
+            ParityBits = receivedParity;
+
+            return receivedRaw;
         }
 
+
+        private void DecodeFilter(out string rawMessage, out Dictionary<int, int> parityBits)
+        {
+            StringBuilder sb = new StringBuilder();
+            parityBits = new Dictionary<int, int>();
+
+            for(int i = 0; i < hammingCode.Length; i++)
+            {
+                if(IsPowerOfTwo(i+1))
+                {
+                    parityBits.Add(i + 1,(int)Char.GetNumericValue(hammingCode[i]));
+                }
+                else
+                {
+                    sb.Append(hammingCode[i]);
+                }
+            }
+
+            rawMessage = sb.ToString();
+        }
 
     }
 }

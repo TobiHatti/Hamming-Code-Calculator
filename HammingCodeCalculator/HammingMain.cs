@@ -43,28 +43,7 @@ namespace HammingCodeCalculator
             
         }
 
-        private void txbEncRawInput_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
 
-        private void dgvEncVisual_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            var cell = dgvEncVisual.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
-            if(cell.Value.ToString().StartsWith("p"))
-            {
-                e.CellStyle.ForeColor = Color.Blue;
-            }
-            else if(cell.Value.ToString().StartsWith("d"))
-            {
-                e.CellStyle.ForeColor = Color.Green;
-            }
-            else if (cell.Value.ToString().StartsWith("c"))
-            {
-                e.CellStyle.ForeColor = Color.Gray;
-            }
-        }
 
         private void txbDecHammingCode_TextChanged(object sender, EventArgs e)
         {
@@ -84,11 +63,49 @@ namespace HammingCodeCalculator
                     lbxDecParity.Items.Add($"p{p++} (c{parity.Key}) = {parity.Value}");
 
                 dgvDecVisual.DataSource = code.GetVisual();
+
+                if (code.ErrorIndex == 0) txbDecValidate.Text = "Code received without errors.";
+                else if (code.ErrorIndex <= code.HammingCode.Length) txbDecValidate.Text = $"Parity-Error: Bit c{code.ErrorIndex} is faulty!";
+                else
+                {
+                    // Remove output that is guaranteed faulty
+                    txbDecValidate.Text = $"{code.ErrorIndex}Too many errors! Code cannot be rebuilt!";
+                    lbxDecParity.Items.Clear();
+                    dgvDecVisual.DataSource = null;
+                    txbDecRawMessage.Text = "";
+                }
             }
             catch
             {
                 MessageBox.Show("Please enter only '1' and '0' in the input field.", "Could not parse Hamming-Code", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+
+        private void dgvFormater(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                var cell = (sender as DataGridView).Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+                if (cell.Value.ToString().StartsWith("p"))
+                {
+                    e.CellStyle.ForeColor = Color.Blue;
+                }
+                else if (cell.Value.ToString().StartsWith("d"))
+                {
+                    e.CellStyle.ForeColor = Color.Green;
+                }
+                else if (cell.Value.ToString().StartsWith("c"))
+                {
+                    e.CellStyle.ForeColor = Color.Gray;
+                }
+                else if (cell.Value.ToString().StartsWith("["))
+                {
+                    e.CellStyle.ForeColor = Color.Orange;
+                }
+            }
+            catch { }
         }
     }
 }
